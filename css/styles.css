@@ -511,6 +511,62 @@ a {
   font-variant-numeric: tabular-nums;
 }
 
+.problem-figure,
+.solution-figure {
+  margin: 0.85rem 0 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.problem-figure[hidden],
+.solution-figure[hidden],
+.sol-controls[hidden] {
+  display: none;
+}
+
+.problem-figure__cap,
+.solution-figure__cap {
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--stone);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.solution-figure__cap {
+  color: var(--copper-deep);
+  background: var(--copper-soft);
+  border-bottom-color: #e8c48a;
+}
+
+.problem-figure img,
+.solution-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.sol-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.solution-figure {
+  border-color: #e8c48a;
+  box-shadow: 0 0 0 2px rgba(180, 83, 9, 0.12);
+}
+
 .exam-meta {
   margin-top: 0.9rem;
   padding: 0.85rem 0.95rem;

@@ -9,9 +9,15 @@
     "page_number": 10,
     "pdf_url": "exams/midterm1/MT1_Fall2023.pdf#page=10",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["Execution order", "Global frame", "Jupyter-adjacent"],
+    "concept_tags": [
+      "Execution order",
+      "Global frame",
+      "Jupyter-adjacent"
+    ],
     "common_trap": "Closest archive proxy for notebook state: students lose track of globals after sequential statements (like running cells out of order).",
-    "points": 15
+    "points": 15,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D01-FA26-MT1-Q4",
@@ -23,9 +29,15 @@
     "page_number": 8,
     "pdf_url": "exams/midterm1/MT1_Fall2026.pdf#page=8",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["Scope", "Name binding", "Jupyter-adjacent"],
-    "common_trap": "No dedicated Jupyter PDF in the archive — use as a stand-in for kernel/state confusion when cells redefine names.",
-    "points": 12
+    "concept_tags": [
+      "Scope",
+      "Name binding",
+      "Jupyter-adjacent"
+    ],
+    "common_trap": "No dedicated Jupyter PDF in the archive \u2014 use as a stand-in for kernel/state confusion when cells redefine names.",
+    "points": 12,
+    "problem_image": "media/problems/D01-FA26-MT1-Q4.webp",
+    "solution_image": "media/solutions/D01-FA26-MT1-Q4.webp"
   },
   {
     "id": "D02-FA24-MT1-Q1",
@@ -37,9 +49,15 @@
     "page_number": 2,
     "pdf_url": "exams/midterm1/MT1_Fall2024.pdf#page=2",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["Python basics", "Syntax", "Lists"],
+    "concept_tags": [
+      "Python basics",
+      "Syntax",
+      "Lists"
+    ],
     "common_trap": "Mixing up comment syntax, assignment vs comparison, or inventing a nonexistent 'if loop'.",
-    "points": 30
+    "points": 30,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D02-FA23-MT1-Q1",
@@ -51,9 +69,15 @@
     "page_number": 3,
     "pdf_url": "exams/midterm1/MT1_Fall2023.pdf#page=3",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["Expressions", "Booleans", "Precedence"],
+    "concept_tags": [
+      "Expressions",
+      "Booleans",
+      "Precedence"
+    ],
     "common_trap": "Operator precedence with `and` / comparisons; string indexing off-by-one.",
-    "points": 30
+    "points": 30,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D02-FA25-MT1-Q1",
@@ -65,23 +89,35 @@
     "page_number": 2,
     "pdf_url": "exams/midterm1/MT1_Fall2025.pdf#page=2",
     "prompt_use": "exit_drill",
-    "concept_tags": ["if", "Basics", "MC"],
+    "concept_tags": [
+      "if",
+      "Basics",
+      "MC"
+    ],
     "common_trap": "Thinking `else`/`elif` are required; confusing recursion base-case wording with basic conditionals.",
-    "points": 30
+    "points": 30,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D03-FA23-MT1-Q1H",
     "discussion": "disc03",
     "theme": "Data Structures & Arrays",
     "exam_title": "Fall 2023 Midterm 1",
-    "topic": "NumPy comparison → boolean array",
+    "topic": "NumPy comparison \u2192 boolean array",
     "pdf_file": "exams/midterm1/MT1_Fall2023.pdf",
     "page_number": 4,
     "pdf_url": "exams/midterm1/MT1_Fall2023.pdf#page=4",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["NumPy", "Boolean array", "Broadcasting"],
+    "concept_tags": [
+      "NumPy",
+      "Boolean array",
+      "Broadcasting"
+    ],
     "common_trap": "Expecting a single True/False instead of an element-wise boolean array.",
-    "points": 3
+    "points": 3,
+    "problem_image": "media/problems/D03-FA23-MT1-Q1H.webp",
+    "solution_image": "media/solutions/D03-FA23-MT1-Q1H.webp"
   },
   {
     "id": "D03-FA25-MT1-Q4",
@@ -93,9 +129,16 @@
     "page_number": 6,
     "pdf_url": "exams/midterm1/MT1_Fall2025.pdf#page=6",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["list", "tuple", "str", "Mutability"],
-    "common_trap": "`str.replace` returns a new string — original unchanged; confusing list append vs indexing.",
-    "points": 8
+    "concept_tags": [
+      "list",
+      "tuple",
+      "str",
+      "Mutability"
+    ],
+    "common_trap": "`str.replace` returns a new string \u2014 original unchanged; confusing list append vs indexing.",
+    "points": 8,
+    "problem_image": "media/problems/D03-FA25-MT1-Q4.webp",
+    "solution_image": "media/solutions/D03-FA25-MT1-Q4.webp"
   },
   {
     "id": "D03-FA26-MT1-Q1-6",
@@ -107,23 +150,35 @@
     "page_number": 5,
     "pdf_url": "exams/midterm1/MT1_Fall2026.pdf#page=5",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["list", "NumPy", "Mutability"],
+    "concept_tags": [
+      "list",
+      "NumPy",
+      "Mutability"
+    ],
     "common_trap": "`V1 + V2` concatenates lists; `np.array(V1) + np.array(V2)` adds element-wise.",
-    "points": 6
+    "points": 6,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D03-FA24-FINAL-RESHAPE",
     "discussion": "disc03",
     "theme": "Data Structures & Arrays",
     "exam_title": "Fall 2023 Final",
-    "topic": "reshape list → NumPy array with ValueError on bad shape",
+    "topic": "reshape list \u2192 NumPy array with ValueError on bad shape",
     "pdf_file": "exams/final/Final_Fall2023.pdf",
     "page_number": 24,
     "pdf_url": "exams/final/Final_Fall2023.pdf#page=24",
     "prompt_use": "sprint",
-    "concept_tags": ["NumPy", "reshape", "list"],
+    "concept_tags": [
+      "NumPy",
+      "reshape",
+      "list"
+    ],
     "common_trap": "Wrong shape init; forgetting to raise when `rows*cols != len(arr)`.",
-    "points": 40
+    "points": 40,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D04-FA24-MT1-Q2",
@@ -135,9 +190,15 @@
     "page_number": 4,
     "pdf_url": "exams/midterm1/MT1_Fall2024.pdf#page=4",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["Defaults", "kwargs", "Functions"],
+    "concept_tags": [
+      "Defaults",
+      "kwargs",
+      "Functions"
+    ],
     "common_trap": "Positional args shift defaults; omitting required args when only keywords are provided.",
-    "points": 25
+    "points": 25,
+    "problem_image": "media/problems/D04-FA24-MT1-Q2.webp",
+    "solution_image": "media/solutions/D04-FA24-MT1-Q2.webp"
   },
   {
     "id": "D04-FA25-MT1-Q2",
@@ -149,9 +210,14 @@
     "page_number": 4,
     "pdf_url": "exams/midterm1/MT1_Fall2025.pdf#page=4",
     "prompt_use": "exit_drill",
-    "concept_tags": ["Defaults", "Functions"],
+    "concept_tags": [
+      "Defaults",
+      "Functions"
+    ],
     "common_trap": "Same default-arg shift trap as netForce variants across terms.",
-    "points": 10
+    "points": 10,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D04-FA25-MT1-Q5",
@@ -163,9 +229,15 @@
     "page_number": 7,
     "pdf_url": "exams/midterm1/MT1_Fall2025.pdf#page=7",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["if", "elif", "Control flow"],
-    "common_trap": "Independent `if`s vs `elif` chain — multiple branches can fire when students expect exclusivity.",
-    "points": 10
+    "concept_tags": [
+      "if",
+      "elif",
+      "Control flow"
+    ],
+    "common_trap": "Independent `if`s vs `elif` chain \u2014 multiple branches can fire when students expect exclusivity.",
+    "points": 10,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D04-FA26-MT1-Q2",
@@ -177,9 +249,15 @@
     "page_number": 6,
     "pdf_url": "exams/midterm1/MT1_Fall2026.pdf#page=6",
     "prompt_use": "sprint",
-    "concept_tags": ["Parameters", "Defaults", "Error cases"],
+    "concept_tags": [
+      "Parameters",
+      "Defaults",
+      "Error cases"
+    ],
     "common_trap": "Missing required positional after keyword; incompatible default order.",
-    "points": 13
+    "points": 13,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D05-FA23-MT1-Q2",
@@ -191,9 +269,16 @@
     "page_number": 6,
     "pdf_url": "exams/midterm1/MT1_Fall2023.pdf#page=6",
     "prompt_use": "sprint",
-    "concept_tags": ["while", "Iteration", "Fill-in"],
-    "common_trap": "Wrong loop condition → infinite loop when n/t not positive as assumed.",
-    "points": 20
+    "concept_tags": [
+      "while",
+      "Iteration",
+      "Fill-in"
+    ],
+    "common_trap": "Wrong loop condition \u2192 infinite loop when n/t not positive as assumed.",
+    "points": 20,
+    "problem_image": "media/problems/D05-FA23-MT1-Q2.webp",
+    "solution_image": "media/solutions/D05-FA23-MT1-Q2.webp",
+    "solution_page": 7
   },
   {
     "id": "D05-FA23-MT1-Q6",
@@ -205,9 +290,16 @@
     "page_number": 14,
     "pdf_url": "exams/midterm1/MT1_Fall2023.pdf#page=14",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["Recursion", "Base case", "Equivalence"],
-    "common_trap": "Missing base case → infinite recursion; confusing recursive vs iterative synonyms.",
-    "points": 10
+    "concept_tags": [
+      "Recursion",
+      "Base case",
+      "Equivalence"
+    ],
+    "common_trap": "Missing base case \u2192 infinite recursion; confusing recursive vs iterative synonyms.",
+    "points": 10,
+    "problem_image": "media/problems/D05-FA23-MT1-Q6.webp",
+    "solution_image": "media/solutions/D05-FA23-MT1-Q6.webp",
+    "solution_page": 15
   },
   {
     "id": "D05-FA24-MT1-Q7",
@@ -219,9 +311,15 @@
     "page_number": 10,
     "pdf_url": "exams/midterm1/MT1_Fall2024.pdf#page=10",
     "prompt_use": "sprint",
-    "concept_tags": ["for", "Recursion", "Base case"],
+    "concept_tags": [
+      "for",
+      "Recursion",
+      "Base case"
+    ],
     "common_trap": "Off-by-one in range; recursive case that never hits base.",
-    "points": 15
+    "points": 15,
+    "problem_image": "media/problems/D05-FA24-MT1-Q7.webp",
+    "solution_image": "media/solutions/D05-FA24-MT1-Q7.webp"
   },
   {
     "id": "D05-FA25-MT1-Q7",
@@ -233,9 +331,15 @@
     "page_number": 10,
     "pdf_url": "exams/midterm1/MT1_Fall2025.pdf#page=10",
     "prompt_use": "exit_drill",
-    "concept_tags": ["Iteration", "Recursion"],
+    "concept_tags": [
+      "Iteration",
+      "Recursion"
+    ],
     "common_trap": "Same arithmetic-sequence recursion traps as FA24.",
-    "points": 15
+    "points": 15,
+    "problem_image": "media/problems/D05-FA25-MT1-Q7.webp",
+    "solution_image": "media/solutions/D05-FA25-MT1-Q7.webp",
+    "solution_page": 11
   },
   {
     "id": "D05-FA26-MT1-Q7",
@@ -247,23 +351,35 @@
     "page_number": 13,
     "pdf_url": "exams/midterm1/MT1_Fall2026.pdf#page=13",
     "prompt_use": "sprint",
-    "concept_tags": ["Recursion", "Base case"],
+    "concept_tags": [
+      "Recursion",
+      "Base case"
+    ],
     "common_trap": "Failing to terminate on 4 / cycle; wrong base cases for happy numbers.",
-    "points": 4
+    "points": 4,
+    "problem_image": "media/problems/D05-FA26-MT1-Q7.webp",
+    "solution_image": "media/solutions/D05-FA26-MT1-Q7.webp",
+    "solution_page": 14
   },
   {
     "id": "D06-FA23-MT2-Q2",
     "discussion": "disc06",
     "theme": "Number Representation",
     "exam_title": "Fall 2023 Midterm 2",
-    "topic": "Signed binary ↔ decimal & float round-off",
+    "topic": "Signed binary \u2194 decimal & float round-off",
     "pdf_file": "exams/midterm2/MT2_Fall2023.pdf",
     "page_number": 5,
     "pdf_url": "exams/midterm2/MT2_Fall2023.pdf#page=5",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["Binary", "Signed integers", "Round-off"],
+    "concept_tags": [
+      "Binary",
+      "Signed integers",
+      "Round-off"
+    ],
     "common_trap": "Sign bit / two's complement mistakes; blaming `+` instead of float representation.",
-    "points": 10
+    "points": 10,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D06-FA24-MT2-Q2",
@@ -275,9 +391,14 @@
     "page_number": 5,
     "pdf_url": "exams/midterm2/MT2_Fall2024.pdf#page=5",
     "prompt_use": "exit_drill",
-    "concept_tags": ["Binary", "Bases"],
+    "concept_tags": [
+      "Binary",
+      "Bases"
+    ],
     "common_trap": "Forgetting the sign bit when converting; wrong max for n-bit signed.",
-    "points": 8
+    "points": 8,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D06-FA25-MT2-Q2",
@@ -289,9 +410,14 @@
     "page_number": 4,
     "pdf_url": "exams/midterm2/MT2_Fall2025.pdf#page=4",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["Binary", "Floating point"],
-    "common_trap": "Confusing round-off with overflow; exponent bump ≠ exact ×2 for all values.",
-    "points": 10
+    "concept_tags": [
+      "Binary",
+      "Floating point"
+    ],
+    "common_trap": "Confusing round-off with overflow; exponent bump \u2260 exact \u00d72 for all values.",
+    "points": 10,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D06-FA25-MT2-Q6",
@@ -303,9 +429,15 @@
     "page_number": 10,
     "pdf_url": "exams/midterm2/MT2_Fall2025.pdf#page=10",
     "prompt_use": "sprint",
-    "concept_tags": ["Binary", "Iteration", "Fill-in"],
+    "concept_tags": [
+      "Binary",
+      "Iteration",
+      "Fill-in"
+    ],
     "common_trap": "Wrong remainder order; mishandling negative inputs / sign bit.",
-    "points": 10
+    "points": 10,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D06-FA24-FINAL-Q12",
@@ -317,9 +449,14 @@
     "page_number": 4,
     "pdf_url": "exams/final/Final_Fall2024.pdf#page=4",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["Floating point", "Equality"],
+    "concept_tags": [
+      "Floating point",
+      "Equality"
+    ],
     "common_trap": "Assuming decimal literals are exact; blaming the `==` operator itself.",
-    "points": 3
+    "points": 3,
+    "problem_image": "media/problems/D06-FA24-FINAL-Q12.webp",
+    "solution_image": "media/solutions/D06-FA24-FINAL-Q12.webp"
   },
   {
     "id": "D07-FA24-MT2-Q5",
@@ -331,9 +468,15 @@
     "page_number": 9,
     "pdf_url": "exams/midterm2/MT2_Fall2024.pdf#page=9",
     "prompt_use": "sprint",
-    "concept_tags": ["Files", "matplotlib", "plot"],
+    "concept_tags": [
+      "Files",
+      "matplotlib",
+      "plot"
+    ],
     "common_trap": "Swapping x/y in `plt.plot`; treating scatter/plot as identical.",
-    "points": 10
+    "points": 10,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D07-FA25-MT2-Q1-EXC",
@@ -345,9 +488,14 @@
     "page_number": 3,
     "pdf_url": "exams/midterm2/MT2_Fall2025.pdf#page=3",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["Exceptions", "try/except"],
+    "concept_tags": [
+      "Exceptions",
+      "try/except"
+    ],
     "common_trap": "Putting safe code in `try`; thinking one `except` can only catch a single error type forever.",
-    "points": 3
+    "points": 3,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D07-FA24-FINAL-Q11",
@@ -359,9 +507,14 @@
     "page_number": 4,
     "pdf_url": "exams/final/Final_Fall2024.pdf#page=4",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["Errors", "Exceptions"],
+    "concept_tags": [
+      "Errors",
+      "Exceptions"
+    ],
     "common_trap": "Confusing syntax vs runtime vs logic vs round-off error categories.",
-    "points": 3
+    "points": 3,
+    "problem_image": "media/problems/D07-FA24-FINAL-Q11.webp",
+    "solution_image": "media/solutions/D07-FA24-FINAL-Q11.webp"
   },
   {
     "id": "D07-FA24-FINAL-TRY",
@@ -373,9 +526,13 @@
     "page_number": 12,
     "pdf_url": "exams/final/Final_Fall2024.pdf#page=12",
     "prompt_use": "exit_drill",
-    "concept_tags": ["try/except"],
+    "concept_tags": [
+      "try/except"
+    ],
     "common_trap": "Misplacing risky code outside `try`.",
-    "points": 3
+    "points": 3,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D08-FA23-MT2-Q1",
@@ -387,9 +544,15 @@
     "page_number": 3,
     "pdf_url": "exams/midterm2/MT2_Fall2023.pdf#page=3",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["MATLAB", "Vectors", "1-based indexing"],
+    "concept_tags": [
+      "MATLAB",
+      "Vectors",
+      "1-based indexing"
+    ],
     "common_trap": "Python 0-based habits in MATLAB; `linspace` count vs colon step confusion.",
-    "points": 25
+    "points": 25,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D08-FA24-MT2-Q1",
@@ -401,9 +564,14 @@
     "page_number": 3,
     "pdf_url": "exams/midterm2/MT2_Fall2024.pdf#page=3",
     "prompt_use": "exit_drill",
-    "concept_tags": ["MATLAB", "Syntax"],
-    "common_trap": "`end` meaning; `%` comments; 1-based access of `v = [10 20 30…]`.",
-    "points": 30
+    "concept_tags": [
+      "MATLAB",
+      "Syntax"
+    ],
+    "common_trap": "`end` meaning; `%` comments; 1-based access of `v = [10 20 30\u2026]`.",
+    "points": 30,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D08-FA25-MT2-Q1",
@@ -415,23 +583,35 @@
     "page_number": 2,
     "pdf_url": "exams/midterm2/MT2_Fall2025.pdf#page=2",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["MATLAB", "if", "Operators"],
+    "concept_tags": [
+      "MATLAB",
+      "if",
+      "Operators"
+    ],
     "common_trap": "Python `:` after `if` pasted into MATLAB; `%` as modulo vs comment.",
-    "points": 30
+    "points": 30,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D09-FA23-MT2-Q4",
     "discussion": "disc09",
     "theme": "MATLAB",
     "exam_title": "Fall 2023 Midterm 2",
-    "topic": "Pythonista → MATLAB: rainfall function bugs",
+    "topic": "Pythonista \u2192 MATLAB: rainfall function bugs",
     "pdf_file": "exams/midterm2/MT2_Fall2023.pdf",
     "page_number": 8,
     "pdf_url": "exams/midterm2/MT2_Fall2023.pdf#page=8",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["MATLAB", "Functions", "end"],
+    "concept_tags": [
+      "MATLAB",
+      "Functions",
+      "end"
+    ],
     "common_trap": "Missing `end`, Python list syntax, wrong indexing inside MATLAB functions.",
-    "points": 15
+    "points": 15,
+    "problem_image": "media/problems/D09-FA23-MT2-Q4.webp",
+    "solution_image": "media/solutions/D09-FA23-MT2-Q4.webp"
   },
   {
     "id": "D09-FA24-MT2-Q6",
@@ -443,9 +623,15 @@
     "page_number": 10,
     "pdf_url": "exams/midterm2/MT2_Fall2024.pdf#page=10",
     "prompt_use": "sprint",
-    "concept_tags": ["MATLAB", "min/max", "Vectors"],
+    "concept_tags": [
+      "MATLAB",
+      "min/max",
+      "Vectors"
+    ],
     "common_trap": "Element-wise min/max misuse; forgetting column-vector orientation.",
-    "points": 15
+    "points": 15,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D09-FA24-MT2-Q7",
@@ -457,37 +643,54 @@
     "page_number": 12,
     "pdf_url": "exams/midterm2/MT2_Fall2024.pdf#page=12",
     "prompt_use": "sprint",
-    "concept_tags": ["MATLAB", "reshape", "numel"],
+    "concept_tags": [
+      "MATLAB",
+      "reshape",
+      "numel"
+    ],
     "common_trap": "Wrong zeros size; column-major fill order surprises.",
-    "points": 15
+    "points": 15,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D09-FA25-MT2-Q3",
     "discussion": "disc09",
     "theme": "MATLAB",
     "exam_title": "Fall 2025 Midterm 2",
-    "topic": "Python arrays → MATLAB one-liners",
+    "topic": "Python arrays \u2192 MATLAB one-liners",
     "pdf_file": "exams/midterm2/MT2_Fall2025.pdf",
     "page_number": 5,
     "pdf_url": "exams/midterm2/MT2_Fall2025.pdf#page=5",
     "prompt_use": "exit_drill",
-    "concept_tags": ["MATLAB", "Array construction"],
+    "concept_tags": [
+      "MATLAB",
+      "Array construction"
+    ],
     "common_trap": "Translating `np` helpers into wrong colon/`linspace` forms.",
-    "points": 10
+    "points": 10,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D10-FA23-MT2-Q6",
     "discussion": "disc10",
     "theme": "Linear Algebra",
     "exam_title": "Fall 2023 Midterm 2",
-    "topic": "Ohm circuit → A·i=b, rank, singular matrix",
+    "topic": "Ohm circuit \u2192 A\u00b7i=b, rank, singular matrix",
     "pdf_file": "exams/midterm2/MT2_Fall2023.pdf",
     "page_number": 12,
     "pdf_url": "exams/midterm2/MT2_Fall2023.pdf#page=12",
     "prompt_use": "sprint",
-    "concept_tags": ["MATLAB", "Linear systems", "rank"],
+    "concept_tags": [
+      "MATLAB",
+      "Linear systems",
+      "rank"
+    ],
     "common_trap": "Wrong A rows; updating one entry vs redefining whole matrix; `\\` vs `inv`.",
-    "points": 15
+    "points": 15,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D10-FA24-MT2-Q3",
@@ -499,9 +702,15 @@
     "page_number": 6,
     "pdf_url": "exams/midterm2/MT2_Fall2024.pdf#page=6",
     "prompt_use": "sprint",
-    "concept_tags": ["MATLAB", "rank", "Linear systems"],
+    "concept_tags": [
+      "MATLAB",
+      "rank",
+      "Linear systems"
+    ],
     "common_trap": "Rank([A b]) vs rank(A) consistency; force vector orientation.",
-    "points": 15
+    "points": 15,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D10-FA25-MT2-Q4",
@@ -513,9 +722,15 @@
     "page_number": 6,
     "pdf_url": "exams/midterm2/MT2_Fall2025.pdf#page=6",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["Least squares", "MATLAB", "Linear systems"],
+    "concept_tags": [
+      "Least squares",
+      "MATLAB",
+      "Linear systems"
+    ],
     "common_trap": "Minimizing `norm(T*M - y)` vs `norm(M*T - y)`; mutating wrong row.",
-    "points": 15
+    "points": 15,
+    "problem_image": "media/problems/D10-FA25-MT2-Q4.webp",
+    "solution_image": "media/solutions/D10-FA25-MT2-Q4.webp"
   },
   {
     "id": "D10-FA23-FINAL-Q26",
@@ -527,9 +742,14 @@
     "page_number": 9,
     "pdf_url": "exams/final/Final_Fall2023.pdf#page=9",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["rank", "Unique solution"],
-    "common_trap": "Assuming square ⇒ unique without checking ranks.",
-    "points": 3
+    "concept_tags": [
+      "rank",
+      "Unique solution"
+    ],
+    "common_trap": "Assuming square \u21d2 unique without checking ranks.",
+    "points": 3,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D11-FA23-FINAL-Q2",
@@ -541,9 +761,15 @@
     "page_number": 16,
     "pdf_url": "exams/final/Final_Fall2023.pdf#page=16",
     "prompt_use": "sprint",
-    "concept_tags": ["Taylor", "Newton-Raphson", "Bisection"],
+    "concept_tags": [
+      "Taylor",
+      "Newton-Raphson",
+      "Bisection"
+    ],
     "common_trap": "Bad initial guess for Newton; loosening tol without understanding accuracy tradeoff.",
-    "points": 30
+    "points": 30,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D11-FA24-FINAL-NR",
@@ -555,23 +781,34 @@
     "page_number": 4,
     "pdf_url": "exams/final/Final_Fall2024.pdf#page=4",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["Newton-Raphson", "Root finding"],
+    "concept_tags": [
+      "Newton-Raphson",
+      "Root finding"
+    ],
     "common_trap": "Claiming Newton is always more accurate than Bisection; ignoring f'=0 failure.",
-    "points": 6
+    "points": 6,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D11-FA24-FINAL-COS",
     "discussion": "disc11",
     "theme": "Series, Root Finding",
     "exam_title": "Fall 2024 Final",
-    "topic": "cos(x)−x: Taylor + Bisection free-response",
+    "topic": "cos(x)\u2212x: Taylor + Bisection free-response",
     "pdf_file": "exams/final/Final_Fall2024.pdf",
     "page_number": 16,
     "pdf_url": "exams/final/Final_Fall2024.pdf#page=16",
     "prompt_use": "sprint",
-    "concept_tags": ["Taylor", "Bisection", "Root finding"],
+    "concept_tags": [
+      "Taylor",
+      "Bisection",
+      "Root finding"
+    ],
     "common_trap": "Wrong remainder term; bracket that doesn't change sign.",
-    "points": 30
+    "points": 30,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D11-FA23-FINAL-MC-ROOT",
@@ -583,9 +820,14 @@
     "page_number": 5,
     "pdf_url": "exams/final/Final_Fall2023.pdf#page=5",
     "prompt_use": "exit_drill",
-    "concept_tags": ["Bisection", "Newton-Raphson"],
+    "concept_tags": [
+      "Bisection",
+      "Newton-Raphson"
+    ],
     "common_trap": "Mixing root-finding goals with optimization/regression.",
-    "points": 6
+    "points": 6,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D12-FA24-FINAL-DIFF",
@@ -597,9 +839,14 @@
     "page_number": 3,
     "pdf_url": "exams/final/Final_Fall2024.pdf#page=3",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["Differentiation", "Integration"],
+    "concept_tags": [
+      "Differentiation",
+      "Integration"
+    ],
     "common_trap": "Forward vs central stencil; misreading which quadrature the snippet implements.",
-    "points": 6
+    "points": 6,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D12-FA23-FINAL-INT",
@@ -611,9 +858,14 @@
     "page_number": 5,
     "pdf_url": "exams/final/Final_Fall2023.pdf#page=5",
     "prompt_use": "spot_the_bug",
-    "concept_tags": ["Integration", "scipy"],
+    "concept_tags": [
+      "Integration",
+      "scipy"
+    ],
     "common_trap": "Wrong func signature for quad; confusing which rule has higher accuracy.",
-    "points": 6
+    "points": 6,
+    "problem_image": "media/problems/D12-FA23-FINAL-INT.webp",
+    "solution_image": "media/solutions/D12-FA23-FINAL-INT.webp"
   },
   {
     "id": "D12-FA24-FINAL-CAR",
@@ -625,9 +877,14 @@
     "page_number": 20,
     "pdf_url": "exams/final/Final_Fall2024.pdf#page=20",
     "prompt_use": "sprint",
-    "concept_tags": ["Central difference", "NumPy"],
+    "concept_tags": [
+      "Central difference",
+      "NumPy"
+    ],
     "common_trap": "Applying central difference at endpoints where neighbors don't exist.",
-    "points": 20
+    "points": 20,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D13-FA23-FINAL-Q4",
@@ -639,9 +896,15 @@
     "page_number": 20,
     "pdf_url": "exams/final/Final_Fall2023.pdf#page=20",
     "prompt_use": "sprint",
-    "concept_tags": ["ODE", "Runge-Kutta", "RK3"],
+    "concept_tags": [
+      "ODE",
+      "Runge-Kutta",
+      "RK3"
+    ],
     "common_trap": "Wrong stage arguments to F; step index off-by-one in time vector.",
-    "points": 30
+    "points": 30,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D13-FA23-FINAL-EULER",
@@ -653,9 +916,14 @@
     "page_number": 4,
     "pdf_url": "exams/final/Final_Fall2023.pdf#page=4",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["ODE", "Forward Euler"],
+    "concept_tags": [
+      "ODE",
+      "Forward Euler"
+    ],
     "common_trap": "Wrong sign/step in Euler update; confusing solver facts about step size.",
-    "points": 6
+    "points": 6,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D13-FA24-FINAL-ODE-MC",
@@ -667,9 +935,16 @@
     "page_number": 7,
     "pdf_url": "exams/final/Final_Fall2024.pdf#page=7",
     "prompt_use": "exit_drill",
-    "concept_tags": ["ODE", "Euler", "Heun", "RK"],
-    "common_trap": "Claiming different-order methods give identical solutions; wrong first-order system size for y'''…",
-    "points": 9
+    "concept_tags": [
+      "ODE",
+      "Euler",
+      "Heun",
+      "RK"
+    ],
+    "common_trap": "Claiming different-order methods give identical solutions; wrong first-order system size for y'''\u2026",
+    "points": 9,
+    "problem_image": null,
+    "solution_image": null
   },
   {
     "id": "D13-FA24-FINAL-ACCURACY",
@@ -681,8 +956,13 @@
     "page_number": 22,
     "pdf_url": "exams/final/Final_Fall2024.pdf#page=22",
     "prompt_use": "flipped_gate",
-    "concept_tags": ["ODE", "Accuracy order"],
+    "concept_tags": [
+      "ODE",
+      "Accuracy order"
+    ],
     "common_trap": "Reversing accuracy ranking of classical one-step methods.",
-    "points": 10
+    "points": 10,
+    "problem_image": null,
+    "solution_image": null
   }
 ]

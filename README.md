@@ -10,7 +10,8 @@ GSI dashboard and exam archive for **E7 (Introduction to Computer Programming fo
 | --- | --- |
 | `index.html` + `css/` + `js/` | GSI dashboard (pod grid, picker, exam launcher) |
 | `js/pod_data.js` | 12 Andean pods + CSV → seat mapping |
-| `data/theme_practice.json` | Disc 01–13 theme bank → PDF `#page=N` + prompt use |
+| `data/theme_practice.json` | Disc 01–13 theme bank → inline problem/sol images + PDF `#page=N` |
+| `media/problems/` · `media/solutions/` | Phone-friendly WebP screenshots (sol hidden until GSI reveal) |
 | `data/exam_manifest.json` | Full-exam archive index (whole PDFs) |
 | `data/checkin_sample.csv` | Offline demo check-in roster |
 | `exams/midterm1/` · `midterm2/` · `final/` | Practice MT1/MT2 + finals (see `exams/README.md`) |
@@ -55,7 +56,7 @@ Each pod has **4 desks**. Overflow still appears on the least-filled pod so nobo
 
 Practice exams live under `exams/midterm1/`, `exams/midterm2/`, and `exams/final/` (sibling `*_sol.pdf` for solutions). See `exams/README.md`.
 
-Weekly practice is indexed by theme in `data/theme_practice.json` (Disc 01–13). On the dashboard, filter by **Discussion week** / **Prompt use**, then **Open Past Exam**.
+Weekly practice is indexed by theme in `data/theme_practice.json` (Disc 01–13). On the dashboard, filter by **Discussion week** / **Prompt use**, show the **inline problem image**, then **Reveal solution** after pods discuss. **Open source PDF** is a secondary GSI action.
 
 When adding a problem for section, append an entry with a verified `#page=N`:
 

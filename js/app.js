@@ -49,11 +49,19 @@
     examCount: document.getElementById("exam-count"),
     openExam: document.getElementById("btn-open-exam"),
     examMeta: document.getElementById("exam-meta"),
+    problemFigure: document.getElementById("problem-figure"),
+    problemImage: document.getElementById("problem-image"),
+    solControls: document.getElementById("sol-controls"),
+    revealSol: document.getElementById("btn-reveal-sol"),
+    hideSol: document.getElementById("btn-hide-sol"),
+    solutionFigure: document.getElementById("solution-figure"),
+    solutionImage: document.getElementById("solution-image"),
   };
 
   let roster = window.E7Pods.emptyPodRoster();
   let exams = [];
   let selectedPodId = null;
+  let solutionRevealed = false;
 
   function init() {
     const fromQuery = new URLSearchParams(window.location.search).get("csv");
@@ -91,8 +99,19 @@
 
     els.discFilter.addEventListener("change", populateExamSelect);
     els.useFilter.addEventListener("change", populateExamSelect);
-    els.examSelect.addEventListener("change", updateExamMeta);
+    els.examSelect.addEventListener("change", () => {
+      solutionRevealed = false;
+      updateExamMeta();
+    });
     els.openExam.addEventListener("click", openSelectedExam);
+    els.revealSol.addEventListener("click", () => {
+      solutionRevealed = true;
+      updateSolutionVisibility();
+    });
+    els.hideSol.addEventListener("click", () => {
+      solutionRevealed = false;
+      updateSolutionVisibility();
+    });
 
     els.podGrid.addEventListener("click", (e) => {
       const card = e.target.closest("[data-pod-id]");
@@ -169,20 +188,24 @@
         .map((ex) => {
           const disc = (ex.discussion || "").replace("disc", "D");
           const use = USE_LABELS[ex.prompt_use] || ex.prompt_use || "";
-          const label = `${disc} · ${ex.exam_title} — ${ex.topic}${use ? ` (${use})` : ""}`;
+          const imgMark = ex.problem_image ? "[img] " : "";
+          const label = `${imgMark}${disc} · ${ex.exam_title} — ${ex.topic}${use ? ` (${use})` : ""}`;
           return `<option value="${escapeAttr(ex.id)}">${escapeHtml(label)}</option>`;
         })
         .join("");
 
     if (list.some((ex) => ex.id === prev)) {
       els.examSelect.value = prev;
+    } else {
+      solutionRevealed = false;
     }
 
     if (els.examCount) {
       const discLabel = els.discFilter.value
         ? DISC_THEMES.find((d) => d.id === els.discFilter.value)?.label || els.discFilter.value
         : "All Disc 01–13";
-      els.examCount.textContent = `${list.length} problem${list.length === 1 ? "" : "s"} · ${discLabel}`;
+      const withImg = list.filter((ex) => ex.problem_image).length;
+      els.examCount.textContent = `${list.length} problem${list.length === 1 ? "" : "s"} · ${withImg} with images · ${discLabel}`;
     }
     updateExamMeta();
   }
@@ -283,14 +306,20 @@
     const id = els.examSelect.value;
     const ex = exams.find((e) => e.id === id);
     els.openExam.disabled = !ex;
+
     if (!ex) {
       els.examMeta.innerHTML =
-        "Choose a Disc week (or All) then a problem to see trap notes and open the PDF deep link.";
+        "Choose a Disc week then a problem. Solution stays hidden until you reveal it.";
+      hidePracticeMedia();
       return;
     }
+
     const discMeta = DISC_THEMES.find((d) => d.id === ex.discussion);
     const useLabel = USE_LABELS[ex.prompt_use] || ex.prompt_use || "—";
     const pts = ex.points != null ? `${ex.points} pts` : "pts n/a";
+    const imgNote = ex.problem_image
+      ? "Inline screenshot below (phone-friendly)."
+      : "No screenshot yet — use Open source PDF.";
     els.examMeta.innerHTML = `
       <div class="exam-meta__row"><strong>${escapeHtml(ex.id)}</strong> · ${escapeHtml(pts)} · page ${escapeHtml(
         String(ex.page_number)
@@ -302,15 +331,71 @@
         .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
         .join("")}</div>
       <p class="exam-meta__trap"><span>Common trap:</span> ${escapeHtml(ex.common_trap || "—")}</p>
-      <code class="exam-meta__url">${escapeHtml(ex.pdf_url)}</code>
+      <p class="exam-meta__trap">${escapeHtml(imgNote)}</p>
     `;
+
+    renderPracticeMedia(ex);
+  }
+
+  function hidePracticeMedia() {
+    els.problemFigure.hidden = true;
+    els.solControls.hidden = true;
+    els.solutionFigure.hidden = true;
+    els.problemImage.removeAttribute("src");
+    els.solutionImage.removeAttribute("src");
+    els.revealSol.hidden = true;
+    els.hideSol.hidden = true;
+  }
+
+  function renderPracticeMedia(ex) {
+    els.solControls.hidden = false;
+    els.openExam.disabled = !ex.pdf_url;
+
+    if (ex.problem_image) {
+      els.problemFigure.hidden = false;
+      els.problemImage.src = ex.problem_image;
+      els.problemImage.alt = `${ex.exam_title}: ${ex.topic}`;
+    } else {
+      els.problemFigure.hidden = true;
+      els.problemImage.removeAttribute("src");
+    }
+
+    if (ex.solution_image) {
+      els.solutionImage.src = ex.solution_image;
+      els.solutionImage.alt = `Solution — ${ex.exam_title}: ${ex.topic}`;
+      els.revealSol.hidden = false;
+      els.revealSol.disabled = false;
+    } else {
+      els.solutionImage.removeAttribute("src");
+      els.revealSol.hidden = false;
+      els.revealSol.disabled = true;
+      els.revealSol.textContent = "No solution image yet";
+      solutionRevealed = false;
+    }
+
+    if (ex.solution_image) {
+      els.revealSol.textContent = "Reveal solution";
+    }
+
+    updateSolutionVisibility();
+  }
+
+  function updateSolutionVisibility() {
+    const id = els.examSelect.value;
+    const ex = exams.find((e) => e.id === id);
+    const canShow = !!(ex && ex.solution_image && solutionRevealed);
+    els.solutionFigure.hidden = !canShow;
+    els.hideSol.hidden = !canShow;
+    if (ex && ex.solution_image) {
+      els.revealSol.hidden = canShow;
+    }
   }
 
   function openSelectedExam() {
     const id = els.examSelect.value;
     const ex = exams.find((e) => e.id === id);
-    if (!ex) return;
-    // Relative deep link works on Pages and local static servers
+    if (!ex || !ex.pdf_url) return;
+    // Secondary GSI action — source PDF deep link
     window.open(ex.pdf_url, "_blank", "noopener,noreferrer");
   }
 

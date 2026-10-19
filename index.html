@@ -82,7 +82,7 @@
             <div class="panel__head">
               <h2 class="panel__title" id="exam-title">Theme practice bank</h2>
               <p class="panel__hint">
-                Filter by Disc week → open <code>pdf_url#page=N</code> for Spot the Bug / sprints
+                Phone-friendly problem image → pods discuss → GSI reveals solution
               </p>
             </div>
             <div class="exam-filters">
@@ -110,14 +110,33 @@
                   <option value="">Loading theme bank…</option>
                 </select>
               </div>
-              <button type="button" class="btn btn--primary" id="btn-open-exam" disabled>
-                Open Past Exam
-              </button>
             </div>
             <p class="exam-count" id="exam-count" aria-live="polite"></p>
             <div class="exam-meta" id="exam-meta">
-              Choose a Disc week (or All) then a problem to see trap notes and open the PDF deep link.
+              Choose a Disc week then a problem. Solution stays hidden until you reveal it.
             </div>
+
+            <figure class="problem-figure" id="problem-figure" hidden>
+              <figcaption class="problem-figure__cap">Problem</figcaption>
+              <img id="problem-image" alt="Exam problem screenshot" decoding="async" />
+            </figure>
+
+            <div class="sol-controls" id="sol-controls" hidden>
+              <button type="button" class="btn btn--primary" id="btn-reveal-sol">
+                Reveal solution
+              </button>
+              <button type="button" class="btn btn--ghost" id="btn-hide-sol" hidden>
+                Hide solution
+              </button>
+              <button type="button" class="btn btn--ghost" id="btn-open-exam" disabled>
+                Open source PDF
+              </button>
+            </div>
+
+            <figure class="solution-figure" id="solution-figure" hidden>
+              <figcaption class="solution-figure__cap">Solution (GSI reveal)</figcaption>
+              <img id="solution-image" alt="Exam solution screenshot" decoding="async" />
+            </figure>
           </section>
         </aside>
       </div>
