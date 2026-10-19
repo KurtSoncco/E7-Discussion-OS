@@ -1,10 +1,33 @@
 /**
  * E7 Discussion OS — GSI dashboard
- * Check-in CSV → Andean pods · Random Pod Picker · Exam Problem Selector
+ * Check-in CSV → Andean pods · Random Pod Picker · Theme practice bank (Disc 01–13)
  */
 (function () {
   const STORAGE_KEY = "e7-checkin-csv-url";
   const SAMPLE_CSV_URL = "data/checkin_sample.csv";
+
+  const DISC_THEMES = [
+    { id: "disc01", label: "Disc 01 — Jupyter Notebook" },
+    { id: "disc02", label: "Disc 02 — Python Basics" },
+    { id: "disc03", label: "Disc 03 — Data Structures & Arrays" },
+    { id: "disc04", label: "Disc 04 — Functions and Conditionals" },
+    { id: "disc05", label: "Disc 05 — Iteration and Recursion" },
+    { id: "disc06", label: "Disc 06 — Number Representation" },
+    { id: "disc07", label: "Disc 07 — Exceptions, Files, Plotting" },
+    { id: "disc08", label: "Disc 08 — MATLAB Introduction" },
+    { id: "disc09", label: "Disc 09 — MATLAB" },
+    { id: "disc10", label: "Disc 10 — Linear Algebra" },
+    { id: "disc11", label: "Disc 11 — Series, Root Finding" },
+    { id: "disc12", label: "Disc 12 — Differentiation, Integration" },
+    { id: "disc13", label: "Disc 13 — ODE" },
+  ];
+
+  const USE_LABELS = {
+    spot_the_bug: "Spot the Bug",
+    sprint: "Sprint",
+    exit_drill: "Exit drill",
+    flipped_gate: "Flipped gate",
+  };
 
   const els = {
     csvUrl: document.getElementById("csv-url"),
@@ -20,7 +43,10 @@
     pickedName: document.getElementById("picked-name"),
     pickedEnglish: document.getElementById("picked-english"),
     pickedMembers: document.getElementById("picked-members"),
+    discFilter: document.getElementById("disc-filter"),
+    useFilter: document.getElementById("use-filter"),
     examSelect: document.getElementById("exam-select"),
+    examCount: document.getElementById("exam-count"),
     openExam: document.getElementById("btn-open-exam"),
     examMeta: document.getElementById("exam-meta"),
   };
@@ -63,6 +89,8 @@
     els.pickPod.addEventListener("click", pickRandomPod);
     els.clearPick.addEventListener("click", clearPick);
 
+    els.discFilter.addEventListener("change", populateExamSelect);
+    els.useFilter.addEventListener("change", populateExamSelect);
     els.examSelect.addEventListener("change", updateExamMeta);
     els.openExam.addEventListener("click", openSelectedExam);
 
@@ -104,22 +132,59 @@
 
   async function loadExams() {
     try {
-      const res = await fetch("data/exam_manifest.json", { cache: "no-store" });
+      const res = await fetch("data/theme_practice.json", { cache: "no-store" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       exams = await res.json();
-      els.examSelect.innerHTML =
-        '<option value="">Select an exam problem…</option>' +
-        exams
-          .map(
-            (ex) =>
-              `<option value="${escapeAttr(ex.id)}">${escapeHtml(ex.exam_title)} — ${escapeHtml(ex.topic)}</option>`
-          )
-          .join("");
-      updateExamMeta();
+
+      els.discFilter.innerHTML =
+        '<option value="">All Disc 01–13</option>' +
+        DISC_THEMES.map(
+          (d) => `<option value="${escapeAttr(d.id)}">${escapeHtml(d.label)}</option>`
+        ).join("");
+
+      populateExamSelect();
     } catch (err) {
       console.error(err);
-      els.examMeta.textContent = "Could not load exam_manifest.json.";
+      els.examMeta.textContent = "Could not load theme_practice.json.";
+      if (els.examCount) els.examCount.textContent = "";
     }
+  }
+
+  function filteredExams() {
+    const disc = els.discFilter.value;
+    const use = els.useFilter.value;
+    return exams.filter((ex) => {
+      if (disc && ex.discussion !== disc) return false;
+      if (use && ex.prompt_use !== use) return false;
+      return true;
+    });
+  }
+
+  function populateExamSelect() {
+    const list = filteredExams();
+    const prev = els.examSelect.value;
+    els.examSelect.innerHTML =
+      '<option value="">Select a practice problem…</option>' +
+      list
+        .map((ex) => {
+          const disc = (ex.discussion || "").replace("disc", "D");
+          const use = USE_LABELS[ex.prompt_use] || ex.prompt_use || "";
+          const label = `${disc} · ${ex.exam_title} — ${ex.topic}${use ? ` (${use})` : ""}`;
+          return `<option value="${escapeAttr(ex.id)}">${escapeHtml(label)}</option>`;
+        })
+        .join("");
+
+    if (list.some((ex) => ex.id === prev)) {
+      els.examSelect.value = prev;
+    }
+
+    if (els.examCount) {
+      const discLabel = els.discFilter.value
+        ? DISC_THEMES.find((d) => d.id === els.discFilter.value)?.label || els.discFilter.value
+        : "All Disc 01–13";
+      els.examCount.textContent = `${list.length} problem${list.length === 1 ? "" : "s"} · ${discLabel}`;
+    }
+    updateExamMeta();
   }
 
   function renderPods() {
@@ -219,15 +284,24 @@
     const ex = exams.find((e) => e.id === id);
     els.openExam.disabled = !ex;
     if (!ex) {
-      els.examMeta.innerHTML = "Choose a problem to see trap notes and open the PDF deep link.";
+      els.examMeta.innerHTML =
+        "Choose a Disc week (or All) then a problem to see trap notes and open the PDF deep link.";
       return;
     }
+    const discMeta = DISC_THEMES.find((d) => d.id === ex.discussion);
+    const useLabel = USE_LABELS[ex.prompt_use] || ex.prompt_use || "—";
+    const pts = ex.points != null ? `${ex.points} pts` : "pts n/a";
     els.examMeta.innerHTML = `
-      <div class="exam-meta__row"><strong>${escapeHtml(ex.id)}</strong> · ${ex.points} pts · page ${ex.page_number}</div>
+      <div class="exam-meta__row"><strong>${escapeHtml(ex.id)}</strong> · ${escapeHtml(pts)} · page ${escapeHtml(
+        String(ex.page_number)
+      )}</div>
+      <div class="exam-meta__row">${escapeHtml(discMeta ? discMeta.label : ex.discussion || "")} · <em>${escapeHtml(
+        useLabel
+      )}</em></div>
       <div class="exam-meta__tags">${(ex.concept_tags || [])
         .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
         .join("")}</div>
-      <p class="exam-meta__trap"><span>Common trap:</span> ${escapeHtml(ex.common_trap)}</p>
+      <p class="exam-meta__trap"><span>Common trap:</span> ${escapeHtml(ex.common_trap || "—")}</p>
       <code class="exam-meta__url">${escapeHtml(ex.pdf_url)}</code>
     `;
   }

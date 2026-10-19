@@ -10,9 +10,10 @@ GSI dashboard and exam archive for **E7 (Introduction to Computer Programming fo
 | --- | --- |
 | `index.html` + `css/` + `js/` | GSI dashboard (pod grid, picker, exam launcher) |
 | `js/pod_data.js` | 12 Andean pods + CSV → seat mapping |
-| `data/exam_manifest.json` | Topic → PDF `#page=N` index |
+| `data/theme_practice.json` | Disc 01–13 theme bank → PDF `#page=N` + prompt use |
+| `data/exam_manifest.json` | Full-exam archive index (whole PDFs) |
 | `data/checkin_sample.csv` | Offline demo check-in roster |
-| `exams/midterm1/` … `midterm3/` + `final/` | Practice MT1/MT2 + finals (see `exams/README.md`; MT3 empty for now) |
+| `exams/midterm1/` · `midterm2/` · `final/` | Practice MT1/MT2 + finals (see `exams/README.md`) |
 | `.github/workflows/deploy.yml` | Deploy `main` to GitHub Pages |
 
 ## Enable GitHub Pages
@@ -50,28 +51,30 @@ Flexible headers are accepted. Useful ones:
 
 Each pod has **4 desks**. Overflow still appears on the least-filled pod so nobody disappears from the board.
 
-## Exam PDFs
+## Exam PDFs & Disc themes
 
-Practice exams live under `exams/midterm1/`, `exams/midterm2/`, and `exams/final/` (sibling `*_sol.pdf` for solutions). `exams/midterm3/` is reserved until an MT3 export exists. See `exams/README.md`.
+Practice exams live under `exams/midterm1/`, `exams/midterm2/`, and `exams/final/` (sibling `*_sol.pdf` for solutions). See `exams/README.md`.
 
-1. Keep filenames stable once linked in `data/exam_manifest.json`.
-2. When you pick a problem for section, extend the manifest with a verified `#page=N` and trap notes:
+Weekly practice is indexed by theme in `data/theme_practice.json` (Disc 01–13). On the dashboard, filter by **Discussion week** / **Prompt use**, then **Open Past Exam**.
 
-   ```json
-   {
-     "id": "FA24-MT1-Q2",
-     "exam_title": "Fall 2024 Midterm 1",
-     "topic": "…",
-     "pdf_file": "exams/midterm1/MT1_Fall2024.pdf",
-     "page_number": 3,
-     "pdf_url": "exams/midterm1/MT1_Fall2024.pdf#page=3",
-     "concept_tags": ["Jupyter", "State"],
-     "common_trap": "…",
-     "points": 8
-   }
-   ```
+When adding a problem for section, append an entry with a verified `#page=N`:
 
-3. On the dashboard, use **Exam problem selector → Open Past Exam** to launch the deep link in a new tab.
+```json
+{
+  "id": "D04-FA24-MT1-Q2",
+  "discussion": "disc04",
+  "theme": "Functions and Conditionals",
+  "exam_title": "Fall 2024 Midterm 1",
+  "topic": "Default args & keyword calls (netForce)",
+  "pdf_file": "exams/midterm1/MT1_Fall2024.pdf",
+  "page_number": 4,
+  "pdf_url": "exams/midterm1/MT1_Fall2024.pdf#page=4",
+  "prompt_use": "spot_the_bug",
+  "concept_tags": ["Defaults", "kwargs"],
+  "common_trap": "…",
+  "points": 25
+}
+```
 
 ## Local preview
 

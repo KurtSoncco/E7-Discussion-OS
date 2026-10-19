@@ -481,7 +481,18 @@ a {
   font-style: italic;
 }
 
-/* —— Exam —— */
+/* —— Exam / theme bank —— */
+.exam-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.65rem;
+}
+
+.exam-filters .field {
+  flex: 1 1 140px;
+}
+
 .exam-row {
   display: flex;
   flex-wrap: wrap;
@@ -491,6 +502,13 @@ a {
 
 .exam-row .field {
   flex: 1 1 220px;
+}
+
+.exam-count {
+  margin: 0.45rem 0 0;
+  font-size: 0.8rem;
+  color: var(--stone);
+  font-variant-numeric: tabular-nums;
 }
 
 .exam-meta {

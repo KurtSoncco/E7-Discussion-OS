@@ -80,22 +80,43 @@
 
           <section class="panel" aria-labelledby="exam-title">
             <div class="panel__head">
-              <h2 class="panel__title" id="exam-title">Exam problem selector</h2>
-              <p class="panel__hint">Opens <code>pdf_url</code> with <code>#page=N</code></p>
+              <h2 class="panel__title" id="exam-title">Theme practice bank</h2>
+              <p class="panel__hint">
+                Filter by Disc week → open <code>pdf_url#page=N</code> for Spot the Bug / sprints
+              </p>
+            </div>
+            <div class="exam-filters">
+              <div class="field">
+                <label for="disc-filter">Discussion week</label>
+                <select id="disc-filter">
+                  <option value="">All Disc 01–13</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="use-filter">Prompt use</label>
+                <select id="use-filter">
+                  <option value="">Any use</option>
+                  <option value="spot_the_bug">Spot the Bug</option>
+                  <option value="sprint">Sprint</option>
+                  <option value="exit_drill">Exit drill</option>
+                  <option value="flipped_gate">Flipped gate</option>
+                </select>
+              </div>
             </div>
             <div class="exam-row">
               <div class="field">
                 <label for="exam-select">Problem</label>
                 <select id="exam-select">
-                  <option value="">Loading manifest…</option>
+                  <option value="">Loading theme bank…</option>
                 </select>
               </div>
               <button type="button" class="btn btn--primary" id="btn-open-exam" disabled>
                 Open Past Exam
               </button>
             </div>
+            <p class="exam-count" id="exam-count" aria-live="polite"></p>
             <div class="exam-meta" id="exam-meta">
-              Choose a problem to see trap notes and open the PDF deep link.
+              Choose a Disc week (or All) then a problem to see trap notes and open the PDF deep link.
             </div>
           </section>
         </aside>
@@ -107,10 +128,9 @@
           URL is also stored in <code>localStorage</code>.
         </p>
         <p>
-          Practice exams: <code>exams/midterm1/</code>, <code>exams/midterm2/</code>,
-          <code>exams/final/</code> (see <code>data/exam_manifest.json</code>).
-          <code>exams/midterm3/</code> is empty until an MT3 export arrives. See the repo README for Pages
-          setup and the 50-minute runbook.
+          Theme bank: <code>data/theme_practice.json</code> (Disc 01–13). PDF archive:
+          <code>exams/midterm1/</code>, <code>exams/midterm2/</code>, <code>exams/final/</code>.
+          See the repo README for Pages setup and the 50-minute runbook.
         </p>
       </footer>
     </div>
