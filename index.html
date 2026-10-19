@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E7 Discussion OS — GSI Dashboard</title>
+    <meta
+      name="description"
+      content="GSI dashboard for E7 discussion: Andean pod picker, check-in CSV, and exam PDF deep links."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand__course">E7 · Intro Programming for Engineers</div>
+          <h1 class="brand__title">Discussion OS</h1>
+          <p class="brand__sub">
+            Call pods, not people. Check-in CSV → 12 Andean pods · exam deep links for Spot the Bug.
+          </p>
+        </div>
+        <div class="header-meta">
+          <span class="chip">Checked in <strong id="checkin-count">0</strong></span>
+          <span class="chip">12 pods · 4 desks</span>
+          <span class="chip">No cold-calling</span>
+        </div>
+      </header>
+
+      <section class="panel" aria-labelledby="checkin-title">
+        <div class="panel__head">
+          <h2 class="panel__title" id="checkin-title">Check-in source</h2>
+          <p class="panel__hint">Google Sheets “Publish to web” CSV, or local sample</p>
+        </div>
+        <div class="toolbar">
+          <div class="field">
+            <label for="csv-url">CSV URL</label>
+            <input
+              id="csv-url"
+              type="url"
+              placeholder="https://docs.google.com/spreadsheets/d/…/export?format=csv"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </div>
+          <div class="actions-inline">
+            <button type="button" class="btn btn--primary" id="btn-load-csv">Load CSV</button>
+            <button type="button" class="btn btn--ghost" id="btn-save-url">Save URL</button>
+            <button type="button" class="btn btn--ghost" id="btn-load-sample">Use sample</button>
+          </div>
+        </div>
+        <p class="status" id="checkin-status" data-kind="busy">Ready.</p>
+      </section>
+
+      <div class="layout">
+        <section class="panel" aria-labelledby="pods-title">
+          <div class="panel__head">
+            <h2 class="panel__title" id="pods-title">Andean pods</h2>
+            <div class="actions-inline">
+              <button type="button" class="btn btn--accent" id="btn-pick-pod">Random Pod Picker</button>
+              <button type="button" class="btn btn--ghost" id="btn-clear-pick">Clear</button>
+            </div>
+          </div>
+          <div class="pod-grid" id="pod-grid" aria-live="polite"></div>
+        </section>
+
+        <aside>
+          <div class="picked" id="picked-panel" hidden>
+            <p class="picked__label">Calling</p>
+            <h2 class="picked__name" id="picked-name">Pod</h2>
+            <p class="picked__english" id="picked-english"></p>
+            <ul class="picked__members" id="picked-members"></ul>
+          </div>
+
+          <section class="panel" aria-labelledby="exam-title">
+            <div class="panel__head">
+              <h2 class="panel__title" id="exam-title">Exam problem selector</h2>
+              <p class="panel__hint">Opens <code>pdf_url</code> with <code>#page=N</code></p>
+            </div>
+            <div class="exam-row">
+              <div class="field">
+                <label for="exam-select">Problem</label>
+                <select id="exam-select">
+                  <option value="">Loading manifest…</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn--primary" id="btn-open-exam" disabled>
+                Open Past Exam
+              </button>
+            </div>
+            <div class="exam-meta" id="exam-meta">
+              Choose a problem to see trap notes and open the PDF deep link.
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <p>
+          Tip: pass <code>?csv=</code> in the URL to set the check-in endpoint for this session.
+          URL is also stored in <code>localStorage</code>.
+        </p>
+        <p>
+          Drop midterm PDFs into <code>exams/</code> using the names in
+          <code>data/exam_manifest.json</code>. See the repo README for Pages setup and the 50-minute runbook.
+        </p>
+      </footer>
+    </div>
+
+    <script src="js/pod_data.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
