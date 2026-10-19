@@ -3,9 +3,9 @@
     "id": "FA24-MT1-Q2",
     "exam_title": "Fall 2024 Midterm 1",
     "topic": "Jupyter Variable Persistence & Execution Order",
-    "pdf_file": "exams/MT1_Fall2024.pdf",
+    "pdf_file": "exams/midterm1/MT1_Fall2024.pdf",
     "page_number": 3,
-    "pdf_url": "exams/MT1_Fall2024.pdf#page=3",
+    "pdf_url": "exams/midterm1/MT1_Fall2024.pdf#page=3",
     "concept_tags": ["Jupyter", "State", "Scope"],
     "common_trap": "Cell 3 uses a variable modified in Cell 5 prior to Kernel Restart.",
     "points": 8
@@ -14,9 +14,9 @@
     "id": "SP25-MT1-Q4",
     "exam_title": "Spring 2025 Midterm 1",
     "topic": "NumPy Slicing vs. In-Place Mutation",
-    "pdf_file": "exams/MT1_Spring2025.pdf",
+    "pdf_file": "exams/midterm1/MT1_Spring2025.pdf",
     "page_number": 5,
-    "pdf_url": "exams/MT1_Spring2025.pdf#page=5",
+    "pdf_url": "exams/midterm1/MT1_Spring2025.pdf#page=5",
     "concept_tags": ["NumPy", "Slicing", "Views vs Copies"],
     "common_trap": "Modifying a slice alters the original array because NumPy returns a view, not a copy.",
     "points": 12
@@ -25,11 +25,22 @@
     "id": "FA24-MT2-Q1",
     "exam_title": "Fall 2024 Midterm 2",
     "topic": "Broadcasting Shape Mismatches",
-    "pdf_file": "exams/MT2_Fall2024.pdf",
+    "pdf_file": "exams/midterm2/MT2_Fall2024.pdf",
     "page_number": 2,
-    "pdf_url": "exams/MT2_Fall2024.pdf#page=2",
+    "pdf_url": "exams/midterm2/MT2_Fall2024.pdf#page=2",
     "concept_tags": ["NumPy", "Broadcasting", "Shapes"],
     "common_trap": "Attempting element-wise addition between shapes (3,4) and (3,1) vs (3,).",
     "points": 10
+  },
+  {
+    "id": "FA24-MT3-Q1",
+    "exam_title": "Fall 2024 Midterm 3",
+    "topic": "Placeholder — add real MT3 problem when PDF is available",
+    "pdf_file": "exams/midterm3/MT3_Fall2024.pdf",
+    "page_number": 1,
+    "pdf_url": "exams/midterm3/MT3_Fall2024.pdf#page=1",
+    "concept_tags": ["Midterm 3"],
+    "common_trap": "Stub entry only — drop the real MT3 PDF under exams/midterm3/ before using in section.",
+    "points": 0
   }
 ]

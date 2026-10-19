@@ -12,7 +12,7 @@ GSI dashboard and exam archive for **E7 (Introduction to Computer Programming fo
 | `js/pod_data.js` | 12 Andean pods + CSV → seat mapping |
 | `data/exam_manifest.json` | Topic → PDF `#page=N` index |
 | `data/checkin_sample.csv` | Offline demo check-in roster |
-| `exams/` | Drop real midterm PDFs here (see `exams/README.md`) |
+| `exams/midterm1/` … `midterm3/` | Drop real Midterm 1/2/3 PDFs here (see `exams/README.md`) |
 | `.github/workflows/deploy.yml` | Deploy `main` to GitHub Pages |
 
 ## Enable GitHub Pages
@@ -52,7 +52,7 @@ Each pod has **4 desks**. Overflow still appears on the least-filled pod so nobo
 
 ## Drop exam PDFs
 
-1. Add real midterm files under `exams/` using the names listed in `exams/README.md` and `data/exam_manifest.json`.
+1. Add real midterm files under `exams/midterm1/`, `exams/midterm2/`, or `exams/midterm3/` using the names listed in `exams/README.md` and `data/exam_manifest.json`.
 2. Do **not** invent placeholder PDF binaries.
 3. Extend the manifest when you add new problems:
 
@@ -61,9 +61,9 @@ Each pod has **4 desks**. Overflow still appears on the least-filled pod so nobo
      "id": "FA24-MT1-Q2",
      "exam_title": "Fall 2024 Midterm 1",
      "topic": "…",
-     "pdf_file": "exams/MT1_Fall2024.pdf",
+     "pdf_file": "exams/midterm1/MT1_Fall2024.pdf",
      "page_number": 3,
-     "pdf_url": "exams/MT1_Fall2024.pdf#page=3",
+     "pdf_url": "exams/midterm1/MT1_Fall2024.pdf#page=3",
      "concept_tags": ["Jupyter", "State"],
      "common_trap": "…",
      "points": 8
