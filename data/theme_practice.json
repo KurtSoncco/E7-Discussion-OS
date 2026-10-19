@@ -630,8 +630,9 @@
     ],
     "common_trap": "Element-wise min/max misuse; forgetting column-vector orientation.",
     "points": 15,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D09-FA24-MT2-Q6.webp",
+    "solution_image": "media/solutions/D09-FA24-MT2-Q6.webp",
+    "solution_page": 11
   },
   {
     "id": "D09-FA24-MT2-Q7",
@@ -650,8 +651,9 @@
     ],
     "common_trap": "Wrong zeros size; column-major fill order surprises.",
     "points": 15,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D09-FA24-MT2-Q7.webp",
+    "solution_image": "media/solutions/D09-FA24-MT2-Q7.webp",
+    "solution_page": 13
   },
   {
     "id": "D09-FA25-MT2-Q3",
@@ -669,8 +671,8 @@
     ],
     "common_trap": "Translating `np` helpers into wrong colon/`linspace` forms.",
     "points": 10,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D09-FA25-MT2-Q3.webp",
+    "solution_image": "media/solutions/D09-FA25-MT2-Q3.webp"
   },
   {
     "id": "D10-FA23-MT2-Q6",
@@ -689,8 +691,8 @@
     ],
     "common_trap": "Wrong A rows; updating one entry vs redefining whole matrix; `\\` vs `inv`.",
     "points": 15,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D10-FA23-MT2-Q6.webp",
+    "solution_image": "media/solutions/D10-FA23-MT2-Q6.webp"
   },
   {
     "id": "D10-FA24-MT2-Q3",
@@ -709,8 +711,8 @@
     ],
     "common_trap": "Rank([A b]) vs rank(A) consistency; force vector orientation.",
     "points": 15,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D10-FA24-MT2-Q3.webp",
+    "solution_image": "media/solutions/D10-FA24-MT2-Q3.webp"
   },
   {
     "id": "D10-FA25-MT2-Q4",
@@ -748,8 +750,8 @@
     ],
     "common_trap": "Assuming square \u21d2 unique without checking ranks.",
     "points": 3,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D10-FA23-FINAL-Q26.webp",
+    "solution_image": "media/solutions/D10-FA23-FINAL-Q26.webp"
   },
   {
     "id": "D11-FA23-FINAL-Q2",
@@ -768,8 +770,8 @@
     ],
     "common_trap": "Bad initial guess for Newton; loosening tol without understanding accuracy tradeoff.",
     "points": 30,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D11-FA23-FINAL-Q2.webp",
+    "solution_image": "media/solutions/D11-FA23-FINAL-Q2.webp"
   },
   {
     "id": "D11-FA24-FINAL-NR",
@@ -787,8 +789,8 @@
     ],
     "common_trap": "Claiming Newton is always more accurate than Bisection; ignoring f'=0 failure.",
     "points": 6,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D11-FA24-FINAL-NR.webp",
+    "solution_image": "media/solutions/D11-FA24-FINAL-NR.webp"
   },
   {
     "id": "D11-FA24-FINAL-COS",
@@ -807,8 +809,8 @@
     ],
     "common_trap": "Wrong remainder term; bracket that doesn't change sign.",
     "points": 30,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D11-FA24-FINAL-COS.webp",
+    "solution_image": "media/solutions/D11-FA24-FINAL-COS.webp"
   },
   {
     "id": "D11-FA23-FINAL-MC-ROOT",
@@ -826,8 +828,8 @@
     ],
     "common_trap": "Mixing root-finding goals with optimization/regression.",
     "points": 6,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D11-FA23-FINAL-MC-ROOT.webp",
+    "solution_image": "media/solutions/D11-FA23-FINAL-MC-ROOT.webp"
   },
   {
     "id": "D12-FA24-FINAL-DIFF",
@@ -845,8 +847,8 @@
     ],
     "common_trap": "Forward vs central stencil; misreading which quadrature the snippet implements.",
     "points": 6,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D12-FA24-FINAL-DIFF.webp",
+    "solution_image": "media/solutions/D12-FA24-FINAL-DIFF.webp"
   },
   {
     "id": "D12-FA23-FINAL-INT",
@@ -883,8 +885,8 @@
     ],
     "common_trap": "Applying central difference at endpoints where neighbors don't exist.",
     "points": 20,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D12-FA24-FINAL-CAR.webp",
+    "solution_image": "media/solutions/D12-FA24-FINAL-CAR.webp"
   },
   {
     "id": "D13-FA23-FINAL-Q4",
@@ -903,8 +905,8 @@
     ],
     "common_trap": "Wrong stage arguments to F; step index off-by-one in time vector.",
     "points": 30,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D13-FA23-FINAL-Q4.webp",
+    "solution_image": "media/solutions/D13-FA23-FINAL-Q4.webp"
   },
   {
     "id": "D13-FA23-FINAL-EULER",
@@ -922,8 +924,8 @@
     ],
     "common_trap": "Wrong sign/step in Euler update; confusing solver facts about step size.",
     "points": 6,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D13-FA23-FINAL-EULER.webp",
+    "solution_image": "media/solutions/D13-FA23-FINAL-EULER.webp"
   },
   {
     "id": "D13-FA24-FINAL-ODE-MC",
@@ -943,8 +945,8 @@
     ],
     "common_trap": "Claiming different-order methods give identical solutions; wrong first-order system size for y'''\u2026",
     "points": 9,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D13-FA24-FINAL-ODE-MC.webp",
+    "solution_image": "media/solutions/D13-FA24-FINAL-ODE-MC.webp"
   },
   {
     "id": "D13-FA24-FINAL-ACCURACY",
@@ -962,7 +964,7 @@
     ],
     "common_trap": "Reversing accuracy ranking of classical one-step methods.",
     "points": 10,
-    "problem_image": null,
-    "solution_image": null
+    "problem_image": "media/problems/D13-FA24-FINAL-ACCURACY.webp",
+    "solution_image": "media/solutions/D13-FA24-FINAL-ACCURACY.webp"
   }
 ]
