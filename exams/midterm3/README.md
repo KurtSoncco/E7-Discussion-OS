@@ -1,5 +1,5 @@
 # Midterm 3
 
-Drop Midterm 3 PDFs here (e.g. `MT3_Fall2024.pdf`).
+No Midterm 3 PDFs were in the Resources export (`Practice Tests/` had Midterm 1, Midterm 2, and Final Exam only).
 
-See [`../README.md`](../README.md) and [`../../data/exam_manifest.json`](../../data/exam_manifest.json). Do not commit invented PDF binaries.
+Drop real MT3 exam + `*_sol.pdf` files here when available, then extend [`../../data/exam_manifest.json`](../../data/exam_manifest.json).

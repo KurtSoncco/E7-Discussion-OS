@@ -1,5 +1,10 @@
 # Midterm 1
 
-Drop Midterm 1 PDFs here (e.g. `MT1_Fall2024.pdf`, `MT1_Spring2025.pdf`).
+Practice exams + solutions (`*_sol.pdf` siblings):
 
-See [`../README.md`](../README.md) and [`../../data/exam_manifest.json`](../../data/exam_manifest.json). Do not commit invented PDF binaries.
+- `MT1_Fall2023.pdf` / `MT1_Fall2023_sol.pdf`
+- `MT1_Fall2024.pdf` / `MT1_Fall2024_sol.pdf`
+- `MT1_Fall2025.pdf` / `MT1_Fall2025_sol.pdf`
+- `MT1_Fall2026.pdf` / `MT1_Fall2026_sol.pdf`
+
+See [`../README.md`](../README.md) and [`../../data/exam_manifest.json`](../../data/exam_manifest.json).

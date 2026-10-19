@@ -12,7 +12,7 @@ GSI dashboard and exam archive for **E7 (Introduction to Computer Programming fo
 | `js/pod_data.js` | 12 Andean pods + CSV → seat mapping |
 | `data/exam_manifest.json` | Topic → PDF `#page=N` index |
 | `data/checkin_sample.csv` | Offline demo check-in roster |
-| `exams/midterm1/` … `midterm3/` | Drop real Midterm 1/2/3 PDFs here (see `exams/README.md`) |
+| `exams/midterm1/` … `midterm3/` + `final/` | Practice MT1/MT2 + finals (see `exams/README.md`; MT3 empty for now) |
 | `.github/workflows/deploy.yml` | Deploy `main` to GitHub Pages |
 
 ## Enable GitHub Pages
@@ -50,11 +50,12 @@ Flexible headers are accepted. Useful ones:
 
 Each pod has **4 desks**. Overflow still appears on the least-filled pod so nobody disappears from the board.
 
-## Drop exam PDFs
+## Exam PDFs
 
-1. Add real midterm files under `exams/midterm1/`, `exams/midterm2/`, or `exams/midterm3/` using the names listed in `exams/README.md` and `data/exam_manifest.json`.
-2. Do **not** invent placeholder PDF binaries.
-3. Extend the manifest when you add new problems:
+Practice exams live under `exams/midterm1/`, `exams/midterm2/`, and `exams/final/` (sibling `*_sol.pdf` for solutions). `exams/midterm3/` is reserved until an MT3 export exists. See `exams/README.md`.
+
+1. Keep filenames stable once linked in `data/exam_manifest.json`.
+2. When you pick a problem for section, extend the manifest with a verified `#page=N` and trap notes:
 
    ```json
    {
@@ -70,7 +71,7 @@ Each pod has **4 desks**. Overflow still appears on the least-filled pod so nobo
    }
    ```
 
-4. On the dashboard, use **Exam problem selector → Open Past Exam** to launch the deep link in a new tab.
+3. On the dashboard, use **Exam problem selector → Open Past Exam** to launch the deep link in a new tab.
 
 ## Local preview
 
