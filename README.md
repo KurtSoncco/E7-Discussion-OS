@@ -29,16 +29,22 @@ GSI dashboard + **projector Stage** for **E7 (Introduction to Computer Programmi
 
 ## Check-in CSV
 
-**Primary (classroom):** Choose / drop a `.csv` on the dashboard. Parsed in-browser with flexible headers.
+**Primary (classroom):** Choose / drop your session attendance `.csv` on the dashboard.
 
-**Secondary:** URL load (Google Sheets publish / `?csv=`), or **Use sample**.
+**Secondary:** URL load, or **Use sample** (`data/session_attendance_present_sample.csv` — Present-only demo). Legacy simple roster: `data/checkin_sample.csv`.
 
-### Columns
+### Session attendance export (current)
 
-- **Name** (or Full Name)
-- **Student ID** (or SID / ID)
-- **Email**
-- **Pod** (optional — Andean pod name; otherwise hashed into free desks)
+Headers like: `last_name,first_name,student_email,gps_distance,checked_in_at,status`
+
+- Name = `first_name` + `last_name`
+- Email = `student_email`
+- **Only `status=Present`** rows are seated (Absent ignored)
+- No student id / pod columns → hash-assign into the 12 Andean pods
+
+### Simple roster (still supported)
+
+- **Name**, **Student ID**, **Email**, optional **Pod**
 
 Each pod has **4 desks**.
 
