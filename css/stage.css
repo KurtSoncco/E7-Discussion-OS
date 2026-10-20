@@ -1,0 +1,267 @@
+/* Projector Stage + student phone views */
+
+.stage-body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  background: #0f1613;
+  color: #f4f6f2;
+}
+
+.stage-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 0.85rem 1.1rem 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, #1a2421 0%, #14201b 100%);
+}
+
+.stage-eyebrow,
+.student-top .stage-eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d2b48c;
+  font-weight: 700;
+}
+
+.stage-title {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.stage-sub {
+  margin: 0.25rem 0 0;
+  color: #b7c2ba;
+  font-size: 0.95rem;
+}
+
+.stage-qr-block {
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.stage-qr-block canvas {
+  display: block;
+  width: 132px;
+  height: 132px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.stage-qr-label {
+  margin: 0.35rem 0 0;
+  font-size: 0.72rem;
+  color: #b7c2ba;
+}
+
+.stage-call {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.1rem;
+  background: linear-gradient(90deg, #92400e 0%, #b45309 55%, #c2410c 100%);
+  color: #fffbeb;
+}
+
+.stage-call[hidden] {
+  display: none;
+}
+
+.stage-call__label {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.stage-call__name {
+  margin: 0.1rem 0 0;
+  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+}
+
+.stage-call__english {
+  margin: 0.1rem 0 0;
+  opacity: 0.9;
+}
+
+.stage-timer {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  font-variant-numeric: tabular-nums;
+}
+
+.stage-timer[hidden] {
+  display: none;
+}
+
+.stage-timer__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.stage-timer__value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stage-timer__unit {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.stage-main {
+  padding: 0.75rem 1rem 1rem;
+  overflow: auto;
+}
+
+.stage-figure {
+  margin: 0 auto;
+  max-width: min(1100px, 100%);
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.stage-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stage-figure--sol {
+  margin-top: 0.85rem;
+  border: 3px solid #f59e0b;
+}
+
+.stage-figure--sol figcaption {
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  background: #fef3c7;
+  color: #92400e;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.stage-figure--sol[hidden] {
+  display: none;
+}
+
+.stage-error {
+  margin: 1rem auto;
+  max-width: 40rem;
+  padding: 0.9rem 1rem;
+  background: #3f1d20;
+  border: 1px solid #9f1239;
+  border-radius: 8px;
+  color: #fecdd3;
+}
+
+.stage-error[hidden] {
+  display: none;
+}
+
+.stage-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: #14201b;
+}
+
+.stage-bar__nav,
+.stage-bar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.stage-bar .btn {
+  text-decoration: none;
+}
+
+.stage-bar .btn--ghost {
+  color: #e8ebe6;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: transparent;
+}
+
+.stage-bar .btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Student phone */
+.student-body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--mist, #e8ebe6);
+  color: var(--ink, #1a2421);
+}
+
+.student-top {
+  padding: 1rem 1rem 0.5rem;
+}
+
+.student-title {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-size: 1.35rem;
+}
+
+.student-sub {
+  margin: 0.25rem 0 0;
+  color: var(--stone, #4a5750);
+  font-size: 0.9rem;
+}
+
+.student-main {
+  padding: 0.5rem 0.75rem 1.5rem;
+}
+
+.student-note {
+  margin: 0.85rem 0 0;
+  font-size: 0.88rem;
+  color: var(--stone, #4a5750);
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .stage-top {
+    flex-direction: column;
+  }
+
+  .stage-qr-block {
+    align-self: flex-start;
+  }
+
+  .stage-call {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,109 +1,60 @@
 # E7 Discussion OS
 
-GSI dashboard and exam archive for **E7 (Introduction to Computer Programming for Engineers in Python)** discussion sections: 12 Andean fauna pods, check-in CSV mapping, Random Pod Picker, and exam PDF deep links.
+GSI dashboard + **projector Stage** for **E7 (Introduction to Computer Programming for Engineers in Python)** discussion: local CSV check-in, 12 Andean fauna pods, Disc-week practice screenshots, fair pod rotation, and solution reveal **only on Stage**.
 
-**Live site (after Pages is enabled):** https://kurtsoncco.github.io/E7-Discussion-OS/
+**Live site:** https://kurtsoncco.github.io/E7-Discussion-OS/
+
+## Classroom how-to (50 minutes)
+
+1. Open the **dashboard** on the projector laptop.
+2. **Choose CSV file** (or drag-drop) your check-in export → pods fill.
+3. Filter **Discussion week** → pick a problem → **Open Stage** (new tab).
+4. Students scan the Stage **QR** for the same problem on phones (problem only).
+5. **Call random pod** (fair rotation) → 20s consult timer on Stage → discuss.
+6. On Stage, **Reveal solution** or press **`R`**. Phones never see the sol.
+7. Optional: **Add to queue** several problems → Stage **Prev/Next**.
 
 ## What’s in this repo
 
 | Path | Role |
 | --- | --- |
-| `index.html` + `css/` + `js/` | GSI dashboard (pod grid, picker, exam launcher) |
+| `index.html` + `js/app.js` | GSI dashboard (local CSV, pods, Disc picker) |
+| `stage.html` + `js/stage.js` | Projector Stage (problem, reveal, QR, called-pod banner) |
+| `student.html` + `js/student.js` | Phone view — **problem only** |
 | `js/pod_data.js` | 12 Andean pods + CSV → seat mapping |
-| `data/theme_practice.json` | Disc 01–13 theme bank → inline problem/sol images + PDF `#page=N` |
-| `media/problems/` · `media/solutions/` | Phone-friendly WebP screenshots (sol hidden until GSI reveal) |
-| `data/exam_manifest.json` | Full-exam archive index (whole PDFs) |
-| `data/checkin_sample.csv` | Offline demo check-in roster |
-| `exams/midterm1/` · `midterm2/` · `final/` | Practice MT1/MT2 + finals (see `exams/README.md`) |
+| `data/theme_practice.json` | Disc 01–13 theme bank + image paths |
+| `media/problems/` · `media/solutions/` | WebP screenshots |
+| `exams/midterm1/` · `midterm2/` · `final/` | Source PDFs |
 | `.github/workflows/deploy.yml` | Deploy `main` to GitHub Pages |
 
-## Enable GitHub Pages
+## Check-in CSV
 
-1. Open the repo **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-3. Push to `main` (or run the **Deploy GitHub Pages** workflow manually).
-4. Wait for the workflow to finish; the site URL will be:
-   `https://kurtsoncco.github.io/E7-Discussion-OS/`
+**Primary (classroom):** Choose / drop a `.csv` on the dashboard. Parsed in-browser with flexible headers.
 
-If Pages was never enabled, the first workflow run may need you to confirm the **github-pages** environment once under **Settings → Environments**.
+**Secondary:** URL load (Google Sheets publish / `?csv=`), or **Use sample**.
 
-## Set the check-in CSV URL
-
-The dashboard loads a CSV of checked-in students (typical Google Forms → Sheets export).
-
-1. In Google Sheets: **File → Share → Publish to web** (or use an `export?format=csv` link for a sheet you control).
-2. Paste the CSV URL into **Check-in source** on the dashboard and click **Load CSV**.
-3. Click **Save URL** to keep it in this browser’s `localStorage`, **or** open the site with:
-
-   ```text
-   https://kurtsoncco.github.io/E7-Discussion-OS/?csv=https://…your…csv…
-   ```
-
-4. For offline / local demo, click **Use sample** (`data/checkin_sample.csv`).
-
-### CSV columns
-
-Flexible headers are accepted. Useful ones:
+### Columns
 
 - **Name** (or Full Name)
 - **Student ID** (or SID / ID)
 - **Email**
-- **Pod** (optional — must match an Andean pod name; otherwise students are hashed into free desks)
+- **Pod** (optional — Andean pod name; otherwise hashed into free desks)
 
-Each pod has **4 desks**. Overflow still appears on the least-filled pod so nobody disappears from the board.
+Each pod has **4 desks**.
 
-## Exam PDFs & Disc themes
+## Disc practice & Stage
 
-Practice exams live under `exams/midterm1/`, `exams/midterm2/`, and `exams/final/` (sibling `*_sol.pdf` for solutions). See `exams/README.md`.
-
-Weekly practice is indexed by theme in `data/theme_practice.json` (Disc 01–13). On the dashboard, filter by **Discussion week** / **Prompt use**, show the **inline problem image**, then **Reveal solution** after pods discuss. **Open source PDF** is a secondary GSI action.
-
-When adding a problem for section, append an entry with a verified `#page=N`:
-
-```json
-{
-  "id": "D04-FA24-MT1-Q2",
-  "discussion": "disc04",
-  "theme": "Functions and Conditionals",
-  "exam_title": "Fall 2024 Midterm 1",
-  "topic": "Default args & keyword calls (netForce)",
-  "pdf_file": "exams/midterm1/MT1_Fall2024.pdf",
-  "page_number": 4,
-  "pdf_url": "exams/midterm1/MT1_Fall2024.pdf#page=4",
-  "prompt_use": "spot_the_bug",
-  "concept_tags": ["Defaults", "kwargs"],
-  "common_trap": "…",
-  "points": 25
-}
-```
+- Filter by **Discussion week** only (no prompt-use labels in the UI).
+- **Open Stage** is the primary CTA; **Source PDF** is secondary.
+- Solutions appear only on Stage after **Reveal** / `R`. Student pages never load solution images.
+- Fair rotation: picker prefers pods not yet called this session; checklist shows who has been called. **Reset called** clears the session list.
 
 ## Local preview
 
-Serve the repo root over HTTP (required for `fetch` of CSV/manifest):
-
 ```bash
-# Python
 python3 -m http.server 8080
-
-# or Node
-npx --yes serve -l 8080
+# open http://localhost:8080
 ```
-
-Open http://localhost:8080 and click **Use sample**.
-
-## 50-minute runbook (concepts)
-
-| Time | Segment |
-| --- | --- |
-| 00:00–00:05 | QR check-in + flipped finger-poll gate |
-| 00:05–00:18 | Spot the Bug / exam autopsy (dashboard PDF deep link) |
-| 00:18–00:42 | Driver/Navigator sprints + setup checkpoint |
-| 00:42–00:47 | Timed solo exit drill |
-| 00:47–00:50 | Master solution debrief (protect this buffer) |
-
-**Engagement:** always call a named pod (e.g. “Pod Ukuku”), never cold-call an individual; offer a 20-second pod consultation buffer if a group hesitates.
-
-For the full context-engineering spec, master system prompt, and specialized generators (Spot the Bug, flipped gate), see the Project docs that accompany this course OS (or paste the master prompt into your agent chat when drafting weekly materials).
 
 ## Pods
 

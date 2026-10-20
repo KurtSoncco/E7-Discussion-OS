@@ -633,3 +633,180 @@ a {
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+/* —— Local CSV drop zone —— */
+.csv-drop {
+  margin-top: 0.35rem;
+  padding: 1rem 1.05rem;
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(165deg, #fff 0%, var(--paper) 100%);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.csv-drop.is-dragover {
+  border-color: var(--copper);
+  background: var(--copper-soft);
+}
+
+.csv-drop__title {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.csv-drop__hint {
+  margin: 0 0 0.85rem;
+  font-size: 0.88rem;
+  color: var(--stone);
+}
+
+.csv-drop__file {
+  margin: 0.65rem 0 0;
+  font-size: 0.85rem;
+  color: var(--pine);
+  font-weight: 600;
+}
+
+.csv-file-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.csv-secondary {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--stone);
+}
+
+.csv-secondary summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.csv-secondary .toolbar {
+  margin-top: 0.65rem;
+}
+
+.panel__hint--inline {
+  margin: -0.35rem 0 0.75rem;
+}
+
+/* —— Called this session —— */
+.called-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.65rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  padding: 0.55rem 0.7rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.called-bar__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--stone);
+}
+
+.called-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.called-chip {
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 0.78rem;
+  color: var(--stone);
+}
+
+.called-chip.is-called {
+  background: var(--copper-soft);
+  border-color: #e8c48a;
+  color: var(--copper-deep);
+  font-weight: 700;
+}
+
+.pod-card.is-called:not(.is-selected) {
+  border-color: #d6c4a3;
+}
+
+.pod-card.is-called:not(.is-selected) .pod-card__count {
+  color: var(--copper-deep);
+}
+
+/* —— Session queue —— */
+.queue-panel {
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.queue-panel[hidden] {
+  display: none;
+}
+
+.queue-panel__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 0.45rem;
+}
+
+.btn--tiny {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.queue-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.queue-item {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--pine);
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  padding: 0.15rem 0;
+}
+
+.queue-item:hover {
+  text-decoration: underline;
+}
+
+.site-footer kbd {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+}

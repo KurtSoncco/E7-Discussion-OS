@@ -6,7 +6,7 @@
     <title>E7 Discussion OS — GSI Dashboard</title>
     <meta
       name="description"
-      content="GSI dashboard for E7 discussion: Andean pod picker, check-in CSV, and exam PDF deep links."
+      content="GSI dashboard for E7 discussion: local CSV check-in, Andean pod picker, Disc practice Stage."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +23,7 @@
           <div class="brand__course">E7 · Intro Programming for Engineers</div>
           <h1 class="brand__title">Discussion OS</h1>
           <p class="brand__sub">
-            Call pods, not people. Check-in CSV → 12 Andean pods · exam deep links for Spot the Bug.
+            Call pods, not people. Local CSV → 12 Andean pods · Disc practice on Stage (projector).
           </p>
         </div>
         <div class="header-meta">
@@ -35,27 +35,50 @@
 
       <section class="panel" aria-labelledby="checkin-title">
         <div class="panel__head">
-          <h2 class="panel__title" id="checkin-title">Check-in source</h2>
-          <p class="panel__hint">Google Sheets “Publish to web” CSV, or local sample</p>
+          <h2 class="panel__title" id="checkin-title">Check-in (local CSV)</h2>
+          <p class="panel__hint">Primary: choose or drop your export file on this laptop</p>
         </div>
-        <div class="toolbar">
-          <div class="field">
-            <label for="csv-url">CSV URL</label>
-            <input
-              id="csv-url"
-              type="url"
-              placeholder="https://docs.google.com/spreadsheets/d/…/export?format=csv"
-              autocomplete="off"
-              spellcheck="false"
-            />
-          </div>
+        <div
+          class="csv-drop"
+          id="csv-drop"
+          tabindex="0"
+          role="button"
+          aria-label="Drop CSV file here or click Choose CSV"
+        >
+          <p class="csv-drop__title">Drop CSV here</p>
+          <p class="csv-drop__hint">
+            Expected columns (flexible names): <strong>Name</strong>, <strong>Student ID</strong>,
+            <strong>Email</strong>, optional <strong>Pod</strong>
+          </p>
           <div class="actions-inline">
-            <button type="button" class="btn btn--primary" id="btn-load-csv">Load CSV</button>
-            <button type="button" class="btn btn--ghost" id="btn-save-url">Save URL</button>
+            <label class="btn btn--primary csv-file-label">
+              Choose CSV file
+              <input id="csv-file" type="file" accept=".csv,text/csv" hidden />
+            </label>
             <button type="button" class="btn btn--ghost" id="btn-load-sample">Use sample</button>
           </div>
+          <p class="csv-drop__file" id="csv-file-name" hidden></p>
         </div>
-        <p class="status" id="checkin-status" data-kind="busy">Ready.</p>
+        <details class="csv-secondary">
+          <summary>Secondary: load from URL</summary>
+          <div class="toolbar">
+            <div class="field">
+              <label for="csv-url">CSV URL</label>
+              <input
+                id="csv-url"
+                type="url"
+                placeholder="https://docs.google.com/spreadsheets/d/…/export?format=csv"
+                autocomplete="off"
+                spellcheck="false"
+              />
+            </div>
+            <div class="actions-inline">
+              <button type="button" class="btn btn--ghost" id="btn-load-csv">Load URL</button>
+              <button type="button" class="btn btn--ghost" id="btn-save-url">Save URL</button>
+            </div>
+          </div>
+        </details>
+        <p class="status" id="checkin-status" data-kind="busy">Ready — choose a local CSV to fill pods.</p>
       </section>
 
       <div class="layout">
@@ -63,9 +86,17 @@
           <div class="panel__head">
             <h2 class="panel__title" id="pods-title">Andean pods</h2>
             <div class="actions-inline">
-              <button type="button" class="btn btn--accent" id="btn-pick-pod">Random Pod Picker</button>
-              <button type="button" class="btn btn--ghost" id="btn-clear-pick">Clear</button>
+              <button type="button" class="btn btn--accent" id="btn-pick-pod">Call random pod</button>
+              <button type="button" class="btn btn--ghost" id="btn-clear-pick">Clear call</button>
+              <button type="button" class="btn btn--ghost" id="btn-reset-called">Reset called</button>
             </div>
+          </div>
+          <p class="panel__hint panel__hint--inline">
+            Fair rotation prefers pods not yet called this session.
+          </p>
+          <div class="called-bar" id="called-bar" aria-live="polite">
+            <span class="called-bar__label">Called this session</span>
+            <ul class="called-list" id="called-list"></ul>
           </div>
           <div class="pod-grid" id="pod-grid" aria-live="polite"></div>
         </section>
@@ -80,26 +111,14 @@
 
           <section class="panel" aria-labelledby="exam-title">
             <div class="panel__head">
-              <h2 class="panel__title" id="exam-title">Theme practice bank</h2>
-              <p class="panel__hint">
-                Phone-friendly problem image → pods discuss → GSI reveals solution
-              </p>
+              <h2 class="panel__title" id="exam-title">Disc practice</h2>
+              <p class="panel__hint">Pick a week → Open Stage on the projector</p>
             </div>
             <div class="exam-filters">
               <div class="field">
                 <label for="disc-filter">Discussion week</label>
                 <select id="disc-filter">
                   <option value="">All Disc 01–13</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="use-filter">Prompt use</label>
-                <select id="use-filter">
-                  <option value="">Any use</option>
-                  <option value="spot_the_bug">Spot the Bug</option>
-                  <option value="sprint">Sprint</option>
-                  <option value="exit_drill">Exit drill</option>
-                  <option value="flipped_gate">Flipped gate</option>
                 </select>
               </div>
             </div>
@@ -113,43 +132,40 @@
             </div>
             <p class="exam-count" id="exam-count" aria-live="polite"></p>
             <div class="exam-meta" id="exam-meta">
-              Choose a Disc week then a problem. Solution stays hidden until you reveal it.
+              Choose a Disc week and problem, then Open Stage for the projector.
             </div>
-
-            <figure class="problem-figure" id="problem-figure" hidden>
-              <figcaption class="problem-figure__cap">Problem</figcaption>
-              <img id="problem-image" alt="Exam problem screenshot" decoding="async" />
-            </figure>
 
             <div class="sol-controls" id="sol-controls" hidden>
-              <button type="button" class="btn btn--primary" id="btn-reveal-sol">
-                Reveal solution
+              <button type="button" class="btn btn--primary" id="btn-open-stage" disabled>
+                Open Stage
               </button>
-              <button type="button" class="btn btn--ghost" id="btn-hide-sol" hidden>
-                Hide solution
+              <button type="button" class="btn btn--ghost" id="btn-add-queue" disabled>
+                Add to queue
               </button>
               <button type="button" class="btn btn--ghost" id="btn-open-exam" disabled>
-                Open source PDF
+                Source PDF
               </button>
             </div>
 
-            <figure class="solution-figure" id="solution-figure" hidden>
-              <figcaption class="solution-figure__cap">Solution (GSI reveal)</figcaption>
-              <img id="solution-image" alt="Exam solution screenshot" decoding="async" />
-            </figure>
+            <div class="queue-panel" id="queue-panel" hidden>
+              <div class="queue-panel__head">
+                <span>Session queue</span>
+                <button type="button" class="btn btn--ghost btn--tiny" id="btn-clear-queue">Clear</button>
+              </div>
+              <ol class="queue-list" id="queue-list"></ol>
+            </div>
           </section>
         </aside>
       </div>
 
       <footer class="site-footer">
         <p>
-          Tip: pass <code>?csv=</code> in the URL to set the check-in endpoint for this session.
-          URL is also stored in <code>localStorage</code>.
+          Classroom: local CSV → pick Disc problem → <strong>Open Stage</strong> → call a pod →
+          reveal with <kbd>R</kbd> on Stage only. Student phones never see solutions.
         </p>
         <p>
-          Theme bank: <code>data/theme_practice.json</code> (Disc 01–13). PDF archive:
-          <code>exams/midterm1/</code>, <code>exams/midterm2/</code>, <code>exams/final/</code>.
-          See the repo README for Pages setup and the 50-minute runbook.
+          Theme bank: <code>data/theme_practice.json</code> · PDFs in
+          <code>exams/midterm1/</code>, <code>midterm2/</code>, <code>final/</code>.
         </p>
       </footer>
     </div>
