@@ -1,19 +1,20 @@
 # Problem & solution screenshots
 
-Phone-friendly WebP crops for the theme practice bank.
+Phone/projector WebPs for the theme practice bank.
 
 ```text
 media/
-  problems/<id>.webp    # shown inline on load
-  solutions/<id>.webp   # hidden until GSI clicks Reveal solution
+  problems/<id>.webp    # shown on Stage / student phones
+  solutions/<id>.webp   # Stage reveal only
 ```
 
-- Source of truth remains the PDFs under `exams/`.
-- v1 images are **full exam pages** (2× raster) at the mapped `#page=N` (or `solution_page` when fill-in answers live on the next page).
-- Paths are referenced from `data/theme_practice.json` as `problem_image` / `solution_image`.
+## Disc 09–13 (full-question stitches)
 
-## Coverage
+- One Stage item = **one full exam question** (all parts together).
+- Multi-page questions set `page_number` + `page_end` (and `solution_page` / `solution_page_end`) in `data/theme_practice.json`.
+- Images are **vertical stitches** of that page range (not instruction-only first pages).
+- Includes FR + MC-tagged items for MATLAB → ODE.
 
-- All **Spot the Bug** entries + full **Disc 05** (kept)
-- Full **Disc 09–13** (every `theme_practice` entry): problem + solution WebP pairs
-- Earlier discs (01–08) beyond Spot-the-Bug / Disc 05 may still be PDF-only until a later pass
+## Earlier coverage
+
+Spot-the-Bug / Disc 05 crops from earlier passes remain for Disc 01–08 practice where present.
