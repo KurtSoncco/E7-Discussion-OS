@@ -59,8 +59,12 @@ function hashString(str) {
 }
 
 /**
- * Parse a Google Sheets / Forms CSV export into student records.
- * Recognizes flexible headers: name, student id, email, pod (optional).
+ * Parse a check-in / session attendance CSV into student records.
+ *
+ * Supports:
+ * - Simple roster: name, student id, email, optional pod
+ * - Session attendance export: last_name, first_name, student_email, status, …
+ *   → name = first_name + " " + last_name; only rows with status Present (case-insensitive)
  */
 function parseCheckInCsv(text) {
   const rows = parseCsv(text);
@@ -68,16 +72,34 @@ function parseCheckInCsv(text) {
 
   const headers = rows[0].map((h) => normalizeKey(h));
   const nameIdx = findHeader(headers, ["name", "full name", "student name", "display name"]);
+  const firstIdx = findHeader(headers, ["first name", "firstname", "given name"]);
+  const lastIdx = findHeader(headers, ["last name", "lastname", "surname", "family name"]);
   const idIdx = findHeader(headers, ["student id", "sid", "id", "student number", "calnet id"]);
-  const emailIdx = findHeader(headers, ["email", "email address", "e mail"]);
+  const emailIdx = findHeader(headers, [
+    "student email",
+    "email",
+    "email address",
+    "e mail",
+  ]);
   const podIdx = findHeader(headers, ["pod", "pod name", "assigned pod", "group", "team"]);
+  const statusIdx = findHeader(headers, ["status", "attendance", "attendance status", "check in status"]);
 
   const students = [];
   for (let r = 1; r < rows.length; r++) {
     const cols = rows[r];
     if (!cols.some((c) => String(c).trim())) continue;
 
-    const name = nameIdx >= 0 ? String(cols[nameIdx] || "").trim() : "";
+    if (statusIdx >= 0) {
+      const status = String(cols[statusIdx] || "").trim().toLowerCase();
+      if (status !== "present") continue;
+    }
+
+    const first = firstIdx >= 0 ? String(cols[firstIdx] || "").trim() : "";
+    const last = lastIdx >= 0 ? String(cols[lastIdx] || "").trim() : "";
+    const joined = [first, last].filter(Boolean).join(" ");
+    const nameFromCol = nameIdx >= 0 ? String(cols[nameIdx] || "").trim() : "";
+    const name = nameFromCol || joined;
+
     const studentId = idIdx >= 0 ? String(cols[idIdx] || "").trim() : "";
     const email = emailIdx >= 0 ? String(cols[emailIdx] || "").trim() : "";
     const podRaw = podIdx >= 0 ? String(cols[podIdx] || "").trim() : "";

@@ -1,0 +1,173 @@
+/* Mobile-first student phone view — problem only */
+
+:root {
+  --ink: #f4f6f2;
+  --ink-dim: #b7c2ba;
+  --paper: #0f1613;
+  --panel: #1a2421;
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #e8c48a;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --ink: #1a2421;
+    --ink-dim: #4a5750;
+    --paper: #eef2eb;
+    --panel: #ffffff;
+    --line: #c5cdc4;
+    --accent: #92400e;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body.student-body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 90% 50% at 50% -20%, rgba(180, 83, 9, 0.18), transparent 55%),
+    var(--paper);
+  line-height: 1.4;
+  -webkit-text-size-adjust: 100%;
+}
+
+.student-top {
+  padding: max(0.85rem, env(safe-area-inset-top)) 1rem 0.5rem;
+}
+
+.student-eyebrow {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.student-disc {
+  margin: 0.45rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-dim);
+}
+
+.student-title {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 5.5vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.student-sub {
+  margin: 0.3rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-dim);
+}
+
+.student-main {
+  padding: 0.5rem 0.65rem max(1.25rem, env(safe-area-inset-bottom));
+}
+
+.problem-frame {
+  margin: 0;
+  border-radius: 12px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  max-height: min(78dvh, 920px);
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+.problem-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 100%;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.problem-frame img.is-loaded {
+  opacity: 1;
+}
+
+.student-note {
+  margin: 0.85rem 0.25rem 0;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--ink-dim);
+}
+
+.student-error {
+  margin: 1.5rem 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #9f1239;
+  background: #3f1d20;
+  color: #fecdd3;
+}
+
+@media (prefers-color-scheme: light) {
+  .student-error {
+    background: #fff1f2;
+    color: #9f1239;
+  }
+}
+
+.student-error[hidden],
+.empty-state[hidden],
+.student-top[hidden],
+.student-main[hidden] {
+  display: none;
+}
+
+.empty-state {
+  min-height: 100dvh;
+  display: grid;
+  align-content: center;
+  gap: 0.55rem;
+  padding: 2rem 1.35rem max(2rem, env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.empty-state__eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.empty-state__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 7vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.empty-state__body {
+  margin: 0.35rem auto 0;
+  max-width: 22rem;
+  color: var(--ink-dim);
+  font-size: 1rem;
+}
