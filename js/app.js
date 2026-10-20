@@ -8,7 +8,6 @@
   const STAGE_CALL_KEY = "e7-stage-call";
   const QUEUE_KEY = "e7-stage-queue";
   const SAMPLE_CSV_URL = "data/session_attendance_present_sample.csv";
-  const LEGACY_SAMPLE_CSV_URL = "data/checkin_sample.csv";
   const CONSULT_SEC = 20;
 
   const DISC_THEMES = [
@@ -97,8 +96,6 @@
       els.csvUrl.value = SAMPLE_CSV_URL;
       loadCheckInUrl(SAMPLE_CSV_URL);
     });
-    // Prefer Present-only attendance demo; fall back silently if missing
-    // (legacy simple roster remains at data/checkin_sample.csv).
 
     els.csvFile.addEventListener("change", () => {
       const file = els.csvFile.files && els.csvFile.files[0];
